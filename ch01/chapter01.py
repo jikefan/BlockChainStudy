@@ -16,3 +16,11 @@ class FieldElement:
     
     def __repr__(self):
         return "FieldElement_{}({})".format(self.prime, self.num)
+    
+# test
+
+a = FieldElement(7, 13)
+b = FieldElement(9, 13)
+
+print(a == b)
+print(a == a)
