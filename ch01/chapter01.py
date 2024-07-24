@@ -48,16 +48,21 @@ class FieldElement:
             raise TypeError("Cannot divide two numbers in different Fields")
         num = (self.num * pow(other.num, self.prime - 2)) % self.prime
         return self.__class__(num, self.prime)
+    
+    def __rmul__(self, coefficient):
+        num = (self.num * coefficient) % self.prime
+        return self.__class__(num=num, prime=self.prime)
 
 # test
 
-a = FieldElement(7, 13)
-b = FieldElement(12, 13)
-c = FieldElement(6, 13)
-print(a + b == c)
+if __name__ == "__main__":
+    a = FieldElement(7, 13)
+    b = FieldElement(12, 13)
+    c = FieldElement(6, 13)
+    print(a + b == c)
 
-print(FieldElement(3, 13) * FieldElement(12, 13) == FieldElement(10, 13))
+    print(FieldElement(3, 13) * FieldElement(12, 13) == FieldElement(10, 13))
 
-print(FieldElement(12, 13) ** 12)
+    print(FieldElement(12, 13) ** 12)
 
-print(FieldElement(7, 19) / FieldElement(5, 19))
+    print(FieldElement(7, 19) / FieldElement(5, 19))
